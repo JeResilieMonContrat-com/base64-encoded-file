@@ -53,6 +53,8 @@ class Base64EncodedFile extends File
                 throw new FileException(sprintf('Unable to create a file into the "%s" directory', $path));
             }
 
+            unlink($path);
+
             if (null !== $extension = (MimeTypes::getDefault()->getExtensions($meta['mediatype'])[0] ?? null)) {
                 $path .= '.' . $extension;
             }
